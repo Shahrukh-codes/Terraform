@@ -62,11 +62,11 @@ resource "aws_instance" "my_instance" {
     key_name = aws_key_pair.my_key.key_name
     security_groups = [aws_security_group.my_security_group.name]
     instance_type = var.ec2_instance_type
-    ami = ec2_ami_id # ubuntu
+    ami = var.ec2_ami_id # ubuntu
    
     root_block_device {
         volume_type = "gp3"
-        volume_size = ec2_root_storage_size
+        volume_size = var.ec2_root_storage_size
     }
     tags = {
       Name = "TWS-Junnon-automate"

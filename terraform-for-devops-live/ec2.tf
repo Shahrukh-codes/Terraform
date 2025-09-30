@@ -75,9 +75,14 @@ for_each = tomap ( {
    
     root_block_device {
         volume_type = "gp3"
-        volume_size = var.ec2_root_storage_size
+        volume_size = var.env =="prd" ? 20 : var.ec2_default_root_storage_size
     }
     tags = {
       Name = each.key
     }
+}
+
+resource "aws_instance" "my_new_instance" {
+  ami = "unknown"
+  instance_type = "unknown"
 }
